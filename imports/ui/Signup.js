@@ -2,13 +2,16 @@ import React    from 'react';
 import {Link} from 'react-router';
 import { Accounts } from 'meteor/accounts-base'
 
+import { createContainer } from 'meteor/react-meteor-data';
 
-export default class Signup extends React.Component {
+
+export class Signup extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      error: ''
+      error: '',
+      deleteThis: 'Yes'
     };
   }
 
@@ -21,7 +24,7 @@ export default class Signup extends React.Component {
         return this.setState({error: "Password must be at least 8 characters."})
       }
 
-      Accounts.createUser({email, password}, (err) => {
+      this.props.createUser({email, password}, (err) => {
         // console.log('callBack'. err);
         if(err) {
           this.setState({error: err.reason});
@@ -37,7 +40,7 @@ export default class Signup extends React.Component {
         <div className="boxed-view--box">
         <p>Sing Up</p>
 
-        {this.state.error ? <p>{this.state.error}</p> : undefined}
+        {this.state.error ? <p className="errorMessage">{this.state.error}</p> : undefined}
 
         <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view--form">
           <input ref="email" type="email" name="email" placeholder="Email Address" />
@@ -52,3 +55,9 @@ export default class Signup extends React.Component {
     );
   }
 }
+
+export default createContainer(() => {
+  return {
+    createUser: Accounts.createUser
+  };
+}, Signup);
