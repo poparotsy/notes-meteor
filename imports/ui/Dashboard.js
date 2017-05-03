@@ -1,5 +1,6 @@
 import React from 'react';
-import PrivateHeader from '../ui/PrivateHeader';
+import PrivateHeader from './PrivateHeader';
+import NoteList from './NoteList';
 
 
 // Stateless functional components example
@@ -9,7 +10,7 @@ export default () => {
     <div>
       <PrivateHeader title="Dashboard"/>
         <div className="page-content">
-          Dashboard page-content.
+          <NoteList/>
         </div>
     </div>
   );
