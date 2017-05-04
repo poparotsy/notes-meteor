@@ -45,13 +45,23 @@ export const onAuthChange = (isAuthenticated) => {
   }
 };
 
+export const globalOnChange = (prevState, nextState) => {
+  globalOnEnter(nextState);
+  };
+export const globalOnEnter = (nextState) => {
+  const lastRoute = nextState.routes[nextState.routes.length - 1];
+  Session.set('currentPagePrivacy', lastRoute.privacy);
+  // debugger;
+};
+
 export const routes = (
   <Router history={browserHistory}>
-
-      <Route exact path="/" component={Login}  onEnter={onEnterPublicPage}/>
-      <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
-      <Route path="/dashboard"  component={Dashboard}  onEnter={onEnterPrivatePage}/>
-      <Route path="/dashboard/:id"  component={Dashboard}  onEnter={onEnterNotePage}/>
+    <Route onEnter={globalOnEnter} onChange={globalOnChange}>
+      <Route exact path="/" component={Login} privacy="unauth" onEnter={onEnterPublicPage}/>
+      <Route path="/signup" component={Signup} privacy="unauth" onEnter={onEnterPublicPage}/>
+      <Route path="/dashboard"  component={Dashboard} privacy="auth" onEnter={onEnterPrivatePage}/>
+      <Route path="/dashboard/:id"  component={Dashboard} privacy="auth" onEnter={onEnterNotePage}/>
       <Route path="*"       component={NotFound} />
-    </Router>
+    </Route>
+  </Router>
 );
