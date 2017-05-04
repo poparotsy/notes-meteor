@@ -6,7 +6,6 @@ export const NoteListHeader = (props) => {
   const addNote = (e) => {
     e.preventDefault();
     props.meteorCall('notes.insert');
-    console.log('addNote clicked');
   };
   return (
     <div>
