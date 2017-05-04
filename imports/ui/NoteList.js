@@ -30,10 +30,15 @@ NoteList.propTypes = {
 };
 
 export default createContainer(() => {
+  const selectedNoteId = Session.get('selectedNoteId');
   // subscribe to Meteor published method/s
   Meteor.subscribe('notes');
   return {
-    notes: Notes.find().fetch()
-  }
-
+    notes: Notes.find().fetch().map((note) => {
+      return {
+        ...note,
+        selected: note._id === selectedNoteId
+      }
+      })
+    }
 }, NoteList);

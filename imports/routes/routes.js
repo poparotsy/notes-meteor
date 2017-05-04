@@ -24,6 +24,15 @@ const onEnterPrivatePage = () => {
   }
 };
 
+const onEnterNotePage = (nextState) => {
+  if(!Meteor.userId()) {
+    browserHistory.replace('/');
+  }else {
+    console.log(nextState);
+    Session.set('selectedNoteId', nextState.params.id);
+  }
+};
+
 export const onAuthChange = (isAuthenticated) => {
   const pathname = browserHistory.getCurrentLocation().pathname;
   const isUnauthenticatedPage = unauthenticatedPages.includes(pathname);
@@ -42,7 +51,7 @@ export const routes = (
       <Route exact path="/" component={Login}  onEnter={onEnterPublicPage}/>
       <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
       <Route path="/dashboard"  component={Dashboard}  onEnter={onEnterPrivatePage}/>
-      <Route path="/dashboard/:id"  component={Dashboard}  onEnter={onEnterPrivatePage}/>
+      <Route path="/dashboard/:id"  component={Dashboard}  onEnter={onEnterNotePage}/>
       <Route path="*"       component={NotFound} />
     </Router>
 );
