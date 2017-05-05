@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -8,6 +9,8 @@ html {
 }
 
 body {
+  background-color: $body-background-color;
+  color: $body-default-color;
   font-family: monospace, sans-serif, Halvetica;
   font-size: $base-font-size;
 }
@@ -18,12 +21,12 @@ h1 {
 }
 
 h2 {
-    font-size: $larg-font-size;    
+    font-size: $larg-font-size;
     margin-bottom: $space;
 }
 
 a {
-  color: $black;
+  color: $body-default-color;
 }
 
 p {
