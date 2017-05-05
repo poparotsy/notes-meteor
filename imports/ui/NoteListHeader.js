@@ -5,7 +5,11 @@ export const NoteListHeader = (props) => {
 
   const addNote = (e) => {
     e.preventDefault();
-    props.meteorCall('notes.insert');
+    props.meteorCall('notes.insert', (err, res) => {
+      if(res) {
+        props.Session.set('selectedNoteId', res);
+        }
+    });
   };
   return (
     <div>
@@ -15,13 +19,15 @@ export const NoteListHeader = (props) => {
 };
 
 NoteListHeader.propTypes = {
-  meteorCall: React.PropTypes.func.isRequired
+  meteorCall: React.PropTypes.func.isRequired,
+  Session: React.PropTypes.object.isRequired
 };
 
 export default createContainer(() =>{
 
   return {
-    meteorCall: Meteor.call
+    meteorCall: Meteor.call,
+    Session
   };
 
 }, NoteListHeader);

@@ -16,6 +16,7 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('user is not authorized.');
     }
+    // this returns a string id
     return Notes.insert({
       title: '',
       body : '',
