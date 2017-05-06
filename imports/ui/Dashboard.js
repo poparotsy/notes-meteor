@@ -9,12 +9,12 @@ import Editor from './Editor';
 export default () => {
   return (
     <div>
-      <PrivateHeader title="Dashboard"/>
+      <PrivateHeader title="Notes"/>
         <div className="page-content">
           <div className="page-content--sidebar">
           <NoteList/>
           </div>
-          <div className="page-content--main"> 
+          <div className="page-content--main">
             <Editor/>
           </div>
 

@@ -9,14 +9,26 @@
     }
 }
 .page-content--sidebar {
-  // display: flex;
-  display: none;
-  width: $page-content-sidebar-width;
-  padding-right: $large-space;
+  display: flex;
+  transition: left .3s ease;
+  width: 100vw;
+
+  position: fixed;
+  bottom: 0;
+  left: -100vw;
+
+  top: $header-height;
   @include desktop () {
     display: flex;
+    position: static;
+    width: $page-content-sidebar-width;
+    padding-right: $large-space;
   }
 }
+
+.is-nav-open .page-content--sidebar {
+  left: 0;
+  }
 
 .page-content--main {
   display: flex;
