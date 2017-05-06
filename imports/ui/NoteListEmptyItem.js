@@ -5,10 +5,8 @@ import {createContainer} from 'react-meteor-data';
 export default NoteListEmptyItem = (props) => {
 
   return (
-    <div>
-      <p>You don't have any notes.</p>
-    </div>
-  );
+      <p className="empty-item">You don't have any notes.</p>
+          );
 
 };
 

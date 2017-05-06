@@ -18,7 +18,7 @@ export const NoteList = (props) => {
         return (<NoteListItem key={note._id} note={note}/>);
       })}
 
-      Note List { props.notes.length }
+      {/* Note List { props.notes.length } */}
     </div>
   );
 

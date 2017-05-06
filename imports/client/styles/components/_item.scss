@@ -9,19 +9,45 @@
 
 // item
 .item {
-  background: $item-bg;
-  border: 1px solid $item-border;
-  margin-bottom: $space;
-  padding: $space;
+cursor: pointer;
+padding: $space;
+border-left: $item-border-width solid transparent;
+transition: background-color .2s ease, border-left .2s ease;
 }
 
-.item--message {
-  color: $item-text-color;
+.item:hover {
+  background-color: $light-gray;
+  border-left: $item-border-width solid $gray;
 }
 
-.item--status-message {
-  color: $item-text-color;
+.item--selected, .item--selected:hover {
+    background-color: $light-gray;
+    border-left: $item-border-width solid $brand-primary;
+}
+
+.item--title {
+  font-weight: normal;
+  font-size: $base-font-size;
+  margin-bottom: .4rem;
+}
+
+.item--selected .item--title {
+  font-weight: bold;
+}
+
+.item--subtitle {
   font-style: italic;
-  text-align: center;
+  color: $dark-gray;
   margin: 0;
+}
+
+.empty-item {
+  font-style: italic;
+  padding: $space;
+  text-align: center;
+}
+.item-list--header {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
 }
