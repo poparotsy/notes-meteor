@@ -1,0 +1,10 @@
+// @mixin funkyBackground ($backgroundColor: green) {
+//   background-color: $backgroundColor;
+//   border: 10px solid orang;
+// }
+
+@mixin desktop () {
+  @media (min-width: 50rem) {
+    @content;
+  }
+}
