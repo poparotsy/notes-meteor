@@ -2,4 +2,30 @@
   background-color: $white;
   border: 1px solid $gray;
   width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: $large-space;
+  }
+.editor--title {
+  border: none;
+  border-bottom: 3px solid $gray;
+  font-size: $larg-font-size;
+  margin-bottom: $large-space;
+  outline: none;
+  padding: $input-spacing;
+}
+
+.editor--body {
+  flex-grow: 1;
+  font-weight: 300;
+  margin-bottom: $large-space;
+  outline: none;
+  padding: $input-spacing;
+  resize: none;
+}
+
+.editor--message {
+  text-align: center;
+  margin: $large-space;
+  font-style: italic;
 }
